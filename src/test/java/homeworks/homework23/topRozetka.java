@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -50,7 +51,7 @@ public class topRozetka {
         firstProductAfterSearch.click();
 
         WebElement topSalesLabel = driver.findElement(By.xpath("//rz-label[@class='main-slider__label ng-star-inserted']"));
-        topSalesLabel.isDisplayed();
+        Assert.assertTrue(topSalesLabel.isDisplayed(),"Label doesn't displayed on the page");
     }
 
     @AfterMethod
