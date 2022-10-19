@@ -33,7 +33,7 @@ public class topRozetka {
 
         WebElement menuCategories = driver.findElement(By.xpath("//a[@class='menu-categories__link']"));
         menuCategories.click();
-        WebElement laptopCategory = driver.findElement(By.xpath("//a[@href='https://rozetka.com.ua/notebooks/c80004/']"));
+        WebElement laptopCategory = driver.findElement(By.xpath("//a[@href='https://rozetka.com.ua/ua/notebooks/c80004/']"));
         laptopCategory.click();
         WebElement salerRozetka = driver.findElement(By.xpath("//a[@data-id='Rozetka']"));
         salerRozetka.click();
