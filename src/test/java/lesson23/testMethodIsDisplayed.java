@@ -52,13 +52,13 @@ public class testMethodIsDisplayed {
         String availabilityOfProductColor = availabilityOfProduct.getCssValue("color");
 
         if (availabilityOfProduct.isDisplayed() && availabilityOfProductColor.equals("rgba(0, 160, 70, 1)")) {
-            FileWriter fileWriter = new FileWriter("rozetkaTest");
-            fileWriter.write(productPageTitleText + " " + productPriceText);
+            FileWriter fileWriter = new FileWriter("rozetkaTest1");
+            fileWriter.write(productPageTitleText + "-" + productPriceText);
             fileWriter.close();
         }
     }
-    @AfterMethod
-    public void after() {
-        driver.quit();
-    }
+//    @AfterMethod
+//    public void after() {
+//        driver.quit();
+//    }
 }

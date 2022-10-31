@@ -1,10 +1,12 @@
 package homeworks.homework24;
 
+import com.fasterxml.jackson.core.util.ByteArrayBuilder;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -26,7 +28,6 @@ public class rozetkaAddToBasket {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.get("https://rozetka.com.ua/ua/");
     }
-
     @Test
     public void checkFirstsProductTitles() throws InterruptedException {
 
@@ -39,16 +40,16 @@ public class rozetkaAddToBasket {
         WebElement firstProductTitle = driver.findElement(By.xpath("//a[contains(@title, '(82KU01C4RA')]"));
         String titleOfFirstProduct = firstProductTitle.getText().trim();
 
-        Thread.sleep(3000);
-        WebElement addFirstProductToBasket = driver.findElement(By.xpath("//app-buy-button[@goods_id='349995669']/button"));
-        addFirstProductToBasket.click();
+//        Thread.sleep(3000);  заменил на wait + By
+        By addFirstProductToBasket = By.xpath("//app-buy-button[@goods_id='349995669']/button");
+        wait.until(ExpectedConditions.visibilityOfElementLocated(( addFirstProductToBasket)));
+        driver.findElement(addFirstProductToBasket).click();
 
         WebElement basketCounter = driver.findElement(By.xpath("//span[contains(@class, 'counter--green')]"));
-        if (basketCounter.getAttribute("innerText").equals("1")) {
-            basketCounter.click();
-        } else {
-            Assert.fail("Ваша корзина пуста или количество товаров больше чем 1");
-        }
+        String counterValue = basketCounter.getText().trim();
+        Assert.assertEquals(counterValue,"1");
+        basketCounter.click();
+
         WebElement titleOfProductInCart = driver.findElement(By.xpath("//a[contains(@class, 'cart-product__title')]"));
         String productTitleInCart = titleOfProductInCart.getText().trim();
 
@@ -57,6 +58,14 @@ public class rozetkaAddToBasket {
     @AfterMethod
     public void after() {
         driver.quit();
+    }
+    public void myClick(By element){  //метод для клика обновляющихся ID
+        try {
+            driver.findElement(element).click();
+        }catch (org.openqa.selenium.StaleElementReferenceException e){
+            System.out.println("HERE " + element);
+            driver.findElement(element).click();
+        }
     }
 }
 
