@@ -55,8 +55,8 @@ public class Homework27 {
         int countPromotionListReturn = Integer.parseInt(promotionsListReturn.getAttribute("childElementCount").trim());
         Assert.assertEquals(countPromotionListReturn, 6);
     }
-    @AfterMethod
-    public void after() {
-        driver.quit();
-    }
+//    @AfterMethod
+//    public void after() {
+//        driver.quit();
+//    }
 }

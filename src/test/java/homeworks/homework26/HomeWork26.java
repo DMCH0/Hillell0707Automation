@@ -48,16 +48,20 @@ public class HomeWork26 {
         int countOfProductTitles = titlesOfGoods.size();
         Assert.assertEquals(countOfProductTitles, 60);
 
-
         List<WebElement> productPrices = driver.findElements(By.cssSelector(".goods-tile__inner .goods-tile__price-value"));
         int countPrices = productPrices.size();
         Assert.assertEquals(countPrices, 60);
 
-        Map<String, Integer > map = new HashMap<>();
+        Map<String, Integer > map = new HashMap<>(); // Моя реализация Мапы
         for (int i = 0 ; i < titlesOfGoods.size(); i++){
             map.put(titlesOfGoods.get(i).getText(), Integer.parseInt(productPrices.get(i).getText().replaceAll(" ","")));
         }
 
+        HashMap<String, String>  titlesAndPrices =new HashMap<>();
+        for (int i = 0 ; i < titlesOfGoods.size(); i++) {
+            String title = titlesOfGoods.get(i).getAttribute("InnerText").trim();   //таким образом можно иcпользовать getAttribute
+
+        }
         FileWriter fileWriter = new FileWriter("rozetkaTitlesAndPrices.txt");
         for (Map.Entry <String, Integer> entry : map.entrySet()) {
             fileWriter.write( entry.getKey() + " - " + entry.getValue() + "\n");

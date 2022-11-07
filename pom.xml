@@ -13,8 +13,9 @@
         <maven.compiler.target>8</maven.compiler.target>
 
         <testing-version>7.5</testing-version>
-        <selenium-version>4.5.0</selenium-version>
+        <selenium-version>4.1.2</selenium-version>
         <webdrivermanager>5.3.0</webdrivermanager>
+        <selenide-version>6.8.1</selenide-version>
     </properties>
 
 <dependencies>
@@ -37,6 +38,10 @@
         <version>${webdrivermanager}</version>
     </dependency>
 
-
+    <dependency>
+        <groupId>com.codeborne</groupId>
+        <artifactId>selenide</artifactId>
+        <version>${selenide-version}</version>
+    </dependency>
 </dependencies>
 </project>
