@@ -1,4 +1,4 @@
-package lesson27.PageObject;
+package lesson23.PageObject;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
