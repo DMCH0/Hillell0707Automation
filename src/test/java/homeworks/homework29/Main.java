@@ -26,7 +26,7 @@ public class Main {
                 .clickOnBasketCounter(new SearchPageLogic().basketCounter)
                 .checkTitlesFromSearchAndBasket();
 
-//        Реализовал два варианта проверки тайтлов, вариант ниже реализован по примеру из лекции (35. Practice + Page Object)ю
+//        Реализовал два варианта проверки тайтлов, вариант ниже реализован по примеру из лекции (35. Practice + Page Object).
 //        SearchPageLogic searchPageLogic = new SearchPageLogic();
 //        String title = searchPageLogic.searchPageTitle();
 //
