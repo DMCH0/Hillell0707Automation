@@ -14,11 +14,8 @@ public class SearchPageLogic {
     SelenideElement addToBasketButton = $(By.xpath("//app-buy-button[@extclass='goods-tile__buy-button']"));
     SelenideElement basketCounter = $(By.xpath("//span[contains(@class, 'counter--green')]"));
 
-    public SearchPageLogic checkProductTitleSearchPage(int titleOfFirstProductIndex){
-        
-        String productTitleOnsearchPage = firstProductInList.get(0).shouldBe(Condition.visible).getText();
-        System.out.println(productTitleOnsearchPage);
-        return page(SearchPageLogic.class);
+    public String searchPageTitle(){
+        return firstProductInList.get(0).shouldBe(Condition.visible).getText().trim();
     }
 
     public SearchPageLogic addToBasketButton(SelenideElement addToBasketButton) {

@@ -1,14 +1,12 @@
 package homeworks.homework29;
 
 import com.codeborne.selenide.Configuration;
+import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
 import static com.codeborne.selenide.Selenide.*;
 
 public class Main {
-
-
     private final MainPageLogic MAIN_PAGE_LOGIC = new MainPageLogic();
 
     @BeforeMethod
@@ -21,17 +19,18 @@ public class Main {
     public void homeWork29() {
 
         MAIN_PAGE_LOGIC
-                .clickOnCategory(MAIN_PAGE_LOGIC.categoriesLaptopsAndPc)
-                .clickOnCategory(new CategoryPageLogic().laptops)
-                .checkProductTitleSearchPage(0)
+                .clickOnCategoryMainPage(MAIN_PAGE_LOGIC.categoriesLaptopsAndPc)
+                .clickOnCategoryCategoryPage(new CategoryPageLogic().laptops)
                 .addToBasketButton(new SearchPageLogic().addToBasketButton)
                 .countInBasket("1")
-                .clickOnBasketCounter(new SearchPageLogic().basketCounter)
-                .checkProductTitleBasket(new BasketPageLogic().titleOfProductInCart);
+                .clickOnBasketCounter(new SearchPageLogic().basketCounter);
 
+        SearchPageLogic searchPageLogic = new SearchPageLogic();
+        String title = searchPageLogic.searchPageTitle();
 
+        BasketPageLogic basketPageLogic = new BasketPageLogic();
+        String basketTitle = basketPageLogic.getTitleOnBasket();
 
-        sleep(1000);
-
-    }
+        Assert.assertEquals(title, basketTitle);
+        }
 }
