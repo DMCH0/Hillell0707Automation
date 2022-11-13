@@ -23,14 +23,16 @@ public class Main {
                 .clickOnCategoryCategoryPage(new CategoryPageLogic().laptops)
                 .addToBasketButton(new SearchPageLogic().addToBasketButton)
                 .countInBasket("1")
-                .clickOnBasketCounter(new SearchPageLogic().basketCounter);
+                .clickOnBasketCounter(new SearchPageLogic().basketCounter)
+                .checkTitlesFromSearchAndBasket();
 
-        SearchPageLogic searchPageLogic = new SearchPageLogic();
-        String title = searchPageLogic.searchPageTitle();
-
-        BasketPageLogic basketPageLogic = new BasketPageLogic();
-        String basketTitle = basketPageLogic.getTitleOnBasket();
-
-        Assert.assertEquals(title, basketTitle);
+//        Реализовал два варианта проверки тайтлов, вариант ниже реализован по примеру из лекции (35. Practice + Page Object)ю
+//        SearchPageLogic searchPageLogic = new SearchPageLogic();
+//        String title = searchPageLogic.searchPageTitle();
+//
+//        BasketPageLogic basketPageLogic = new BasketPageLogic();
+//        String basketTitle = basketPageLogic.getTitleOnBasket();
+//
+//        Assert.assertEquals(title, basketTitle);
         }
 }

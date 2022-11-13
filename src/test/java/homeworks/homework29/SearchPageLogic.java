@@ -15,7 +15,7 @@ public class SearchPageLogic {
     SelenideElement basketCounter = $(By.xpath("//span[contains(@class, 'counter--green')]"));
 
     public String searchPageTitle(){
-        return firstProductInList.get(0).shouldBe(Condition.visible).getText().trim();
+        return firstProductInList.get(0).shouldBe(Condition.visible).text().trim();
     }
 
     public SearchPageLogic addToBasketButton(SelenideElement addToBasketButton) {
